@@ -1,0 +1,22 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: 0;
+	text-decoration: none;
+	font-family: Helvetica, sans-serif;
+	transition: all 0.2s ease;
+}
+body {
+	background-color: $black;
+	color: $white;
+}
+.btn {
+	outline: none;
+	border: none;
+	background-color: $white;
+	color: $black;
+	cursor: pointer;
+}
+ul {
+	list-style-type: none;
+}

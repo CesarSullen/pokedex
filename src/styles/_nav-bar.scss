@@ -1,0 +1,34 @@
+@each $type, $color in $pokemon-types {
+	##{$type} {
+		background-color: $color;
+		color: if(lightness($color) > 50, $black, $white);
+		&:hover {
+			background-color: $white;
+			color: $black;
+			box-shadow: 0px 0px 5px 2px $color;
+		}
+	}
+}
+#see-all {
+	&:hover {
+		background-color: $white;
+		color: $black;
+		box-shadow: 0px 0px 5px 2px $white;
+	}
+}
+.nav {
+	padding: 10px;
+}
+
+.nav-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.nav-btn {
+	margin: 5px;
+	border-radius: 5px;
+	font-size: 1rem;
+	padding: 10px 20px;
+}
