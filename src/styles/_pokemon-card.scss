@@ -11,7 +11,6 @@
 
 	.pokemon-id-back {
 		position: absolute;
-		top: 1rem;
 		left: 1rem;
 		font-size: 6rem;
 		font-weight: 800;
@@ -26,7 +25,7 @@
 		justify-content: center;
 		img {
 			width: 100%;
-			max-width: 6rem;
+			height: 150px;
 		}
 	}
 
@@ -49,31 +48,18 @@
 		.pokemon-name {
 			font-size: 1.4rem;
 		}
-
-		.pokemon-types {
-			display: flex;
-			gap: 0.5rem;
-			font-size: 0.75rem;
-			font-weight: 600;
-			flex-wrap: wrap;
-			justify-content: center;
-
-			.type {
-				padding: 0.25rem 0.5rem;
-				border-radius: 100vmax;
-			}
-		}
-
-		.pokemon-stats {
-			display: flex;
-			gap: 1rem;
-			font-size: 0.85rem;
-
-			.stat {
-				background-color: $white;
-				padding: 0.25rem 0.5rem;
-				border-radius: 100vmax;
-			}
-		}
+	}
+}
+.pokemon-types {
+	display: flex;
+	gap: 0.5rem;
+	font-size: 0.75rem;
+	font-weight: 600;
+	flex-wrap: wrap;
+	justify-content: center;
+	.type {
+		padding: 0.25rem 0.5rem;
+		border-radius: 100vmax;
+		text-transform: uppercase;
 	}
 }

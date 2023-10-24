@@ -1,6 +1,6 @@
 <template>
 	<div class="nav">
-		<ul class="nav-list">
+		<!-- <ul class="nav-list">
 			<li class="nav-item">
 				<button class="btn nav-btn" id="see-all">See All</button>
 			</li>
@@ -58,6 +58,7 @@
 			<li class="nav-item">
 				<button class="btn nav-btn" id="fairy">Fairy</button>
 			</li>
-		</ul>
+		</ul> -->
 	</div>
 </template>
+<script setup></script>
