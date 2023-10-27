@@ -14,8 +14,8 @@
   **Last update:**
 
 - Added the Pokémon page.
-- Removed the nav bar.
-- Added a search bar.
+- Added the Nav Bar.
+- UI improvements.
 
 ## Screenshots
 
@@ -25,8 +25,12 @@ _Phone View_
 
 ![phone view - pokemon](./public/screenshots/phone-view-pokemon.png)
 
-_Phone View (profile)_
+_Phone View (pokemon)_
 
 ![desktop view](./public/screenshots/desktop-view.png)
 
 _Desktop View_
+
+![desktop view - pokemon](./public/screenshots/desktop-view-pokemon.png)
+
+_Desktop View (pokemon)_

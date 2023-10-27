@@ -11,9 +11,12 @@
 	const routeId = useRoute().params.id;
 	const pokemon = ref();
 
-	fetch(pokeapi + `${routeId}`)
-		.then((response) => response.json())
-		.then((data) => showPokemon(data));
+	const fetchData = async () => {
+		await fetch(pokeapi + `${routeId}`)
+			.then((response) => response.json())
+			.then((data) => showPokemon(data));
+	};
+	fetchData();
 
 	function showPokemon(poke) {
 		pokemon.value = {

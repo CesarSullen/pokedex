@@ -1,6 +1,6 @@
 <template>
+	<h1 class="pokemon-name">{{ pokemon.name }}</h1>
 	<div class="stats-container">
-		<h1 class="pokemon-name">{{ pokemon.name }}</h1>
 		<div class="pokemon-img-container">
 			<img :src="pokemon.img" />
 			<div class="pokemon-types">
@@ -61,25 +61,17 @@
 					/>
 					<h3 class="stat-name">SPD: {{ pokemon.stats[5] }}</h3>
 				</div>
-			</div>
 
-			<div class="pokemon-moves">
-				<h2 class="section-title">Moves:</h2>
-
-				<p v-for="move in pokemon.moves" :key="move" class="section-body">
-					{{ move }}
-				</p>
-			</div>
-
-			<div class="pokemon-abilities">
-				<h2 class="section-title">Abilities:</h2>
-				<p
-					v-for="ability in pokemon.abilities"
-					:key="ability"
-					class="section-body"
-				>
-					{{ ability }}
-				</p>
+				<div class="pokemon-abilities">
+					<h2 class="section-title">Abilities:</h2>
+					<p
+						v-for="ability in pokemon.abilities"
+						:key="ability"
+						class="section-body"
+					>
+						{{ ability }}
+					</p>
+				</div>
 			</div>
 
 			<!--IT DOES'NT WORK
@@ -94,6 +86,13 @@
 					{{ location }}
 				</p>
 			</div> -->
+		</div>
+		<div class="pokemon-moves">
+			<h2 class="section-title">Moves:</h2>
+
+			<p v-for="move in pokemon.moves" :key="move" class="section-body">
+				{{ move }}
+			</p>
 		</div>
 	</div>
 </template>
