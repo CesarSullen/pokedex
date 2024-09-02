@@ -1,6 +1,6 @@
 const pokemonList = document.getElementById("pokemon-list");
 
-for (let i = 1; i <= 300; i++) {
+for (let i = 1; i <= 151; i++) {
   fetch("https://pokeapi.co/api/v2/pokemon/" + i)
     .then((response) => response.json())
     .then((data) => {
@@ -16,7 +16,6 @@ for (let i = 1; i <= 300; i++) {
 
       const card = document.createElement("div");
       card.classList.add("pokemon-card");
-      card.classList.add("fade-in");
       card.innerHTML = `
         <div class="pokemon-img">
             <img src="${pokemon.img}" alt="${pokemon.name}">
@@ -32,6 +31,8 @@ for (let i = 1; i <= 300; i++) {
               .join("")}</div>
         </div>
       `;
+
+      /* card.classList.add("fade-in"); */
 
       link.appendChild(card);
       pokemonList.appendChild(link);
