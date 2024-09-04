@@ -47,6 +47,7 @@ function showPokemon(poke) {
         <img src="https://cdn-icons-png.flaticon.com/512/5542/5542205.png" class="stat-img" />
         <h3 class="stat-name">XP: ${pokemon.baseXP}</h3>
       </div>
+      
       <div class="stat">
         <img src="https://cdn-icons-png.flaticon.com/512/1840/1840692.png" class="stat-img" />
         <h3 class="stat-name">ATK: ${pokemon.stats[1]}</h3>

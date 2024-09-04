@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Tomorrow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -8,12 +9,6 @@
   text-decoration: none;
 }
 
-/* // Typography
-@font-face {
-  font-family: "*name*";
-  src: url("../typography/") format("truetype");
-  font-weight: 400;
-} */
 #normal {
   background-color: #a8a878;
   color: #1c1c1c;
@@ -195,7 +190,7 @@
 }
 
 .important-text {
-  color: red;
+  color: #7038f8;
 }
 
 .bold {
@@ -210,6 +205,7 @@
   padding: 1.5rem;
   max-width: 1000px;
   margin: auto;
+  font-family: "Tomorrow";
 }
 
 .btn {
@@ -220,11 +216,11 @@
   cursor: pointer;
   width: 100%;
   max-width: 400px;
-  background-color: red;
+  background-color: #7038f8;
   color: #2c2f35;
 }
 .btn:hover {
-  box-shadow: 0 0 10px 1px red;
+  box-shadow: 0 0 10px 1px #7038f8;
 }
 
 body {
@@ -242,13 +238,53 @@ body {
   opacity: 1;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#pokemon-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+#categories {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.category {
+  background: #1c1c1c;
+  padding: 0.5rem;
+  border-radius: 5px;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+}
+.category:hover {
+  box-shadow: 0px 0px 5px 3px #7038f8;
+}
+
+@media screen and (min-width: 720px) {
+  #pokemon-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  #categories {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
 .pokemon-card {
-  background-color: #ececec;
+  background-color: #1c1c1c;
   border-radius: 15px;
-  color: #1c1c1c;
-  box-shadow: 5px 5px 15px 3px #1c1c1c;
+  box-shadow: #1c1c1c;
   text-transform: uppercase;
-  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+.pokemon-card:hover {
+  box-shadow: 0px 0px 15px 3px #7038f8;
 }
 
 .pokemon-img {
@@ -258,15 +294,15 @@ body {
 }
 .pokemon-img img {
   width: 100%;
-  height: 150px;
+  height: 120px;
 }
 
 .pokemon-info {
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
 }
 .pokemon-info .pokemon-types {
   display: flex;
-  align-items: center;
+  justify-content: center;
   text-transform: uppercase;
   gap: 5px;
 }
@@ -441,8 +477,7 @@ body {
 .pokemon-name {
   text-transform: capitalize;
   text-align: center;
-  font-size: 3rem;
-  margin-top: 2rem;
+  font-size: 2rem;
 }
 
 .pokemon-img-container {

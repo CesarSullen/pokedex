@@ -1,6 +1,7 @@
 const pokemonList = document.getElementById("pokemon-list");
 
-for (let i = 1; i <= 151; i++) {
+// Obtaining Pokémon List
+for (let i = 1; i <= 4; i++) {
   fetch("https://pokeapi.co/api/v2/pokemon/" + i)
     .then((response) => response.json())
     .then((data) => {
@@ -16,14 +17,15 @@ for (let i = 1; i <= 151; i++) {
 
       const card = document.createElement("div");
       card.classList.add("pokemon-card");
+
       card.innerHTML = `
         <div class="pokemon-img">
             <img src="${pokemon.img}" alt="${pokemon.name}">
         </div>
         <div class="pokemon-info">
             <h3 class="pokemon-name">${pokemon.name}</h3>
-            <div class="bold">ID: ${pokemon.id}</div>
-            <div class="pokemon-types bold">Types: ${pokemon.types
+            
+            <div class="pokemon-types bold">${pokemon.types
               .map((type) => {
                 const typeClass = type.toLowerCase();
                 return `<span class="type ${typeClass}">${type}</span>`;
@@ -32,14 +34,32 @@ for (let i = 1; i <= 151; i++) {
         </div>
       `;
 
-      /* card.classList.add("fade-in"); */
-
       link.appendChild(card);
       pokemonList.appendChild(link);
     })
     .catch((error) => console.log(error));
 }
 
+// Obtaining Pokémon types
+const categories = document.getElementById("categories");
+for (let i = 1; i <= 18; i++) {
+  fetch("https://pokeapi.co/api/v2/type/" + i)
+    .then((response) => response.json())
+    .then((data) => {
+      const typeBtn = document.createElement("button");
+      typeBtn.onclick = function () {
+        window.location.href = `./views/pokemon-types.html?name=${data.name}`;
+      };
+
+      typeBtn.classList.add("type-btn");
+      typeBtn.classList.add("category");
+      typeBtn.textContent = data.name.toUpperCase();
+
+      categories.appendChild(typeBtn);
+    });
+}
+
+/* 
 // Interception Observer
 const sections = document.querySelectorAll(".fade-in");
 
@@ -59,3 +79,4 @@ const observer = new IntersectionObserver(
 sections.forEach((section) => {
   observer.observe(section);
 });
+ */
