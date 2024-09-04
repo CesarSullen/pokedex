@@ -1,7 +1,7 @@
 const pokemonList = document.getElementById("pokemon-list");
 
 // Obtaining Pokémon List
-for (let i = 1; i <= 4; i++) {
+for (let i = 1; i <= 151; i++) {
   fetch("https://pokeapi.co/api/v2/pokemon/" + i)
     .then((response) => response.json())
     .then((data) => {
