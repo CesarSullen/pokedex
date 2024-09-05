@@ -25,80 +25,141 @@ function showPokemon(poke) {
     stats: poke.stats.map((stat) => stat.base_stat),
   };
 
-  const pokemonStatHTML = `
-  <div class="pokemon-stat">
-    <h1 class="pokemon-name">${pokemon.name}</h1>
-    <div class="pokemon-img-container section">
-      <img src="${pokemon.img}" />
-      <div class="pokemon-types">
-        ${pokemon.types
-          .map((type) => `<p id="${type}" class="type">${type}</p>`)
-          .join("")}
-      </div>
-    </div>
+  // Añadir los elementos al DOM
+  const pokemonImgContainer = document.getElementById("pokemonImgContainer");
 
-    <div class="section pokemon-stats">
-      <h2 class="section-title">Stats</h2>
-      <div class="stat">
-        <img src="https://cdn-icons-png.flaticon.com/512/602/602455.png" class="stat-img" />
-        <h3 class="stat-name">HP: ${pokemon.stats[0]}</h3>
-      </div>
-      <div class="stat">
-        <img src="https://cdn-icons-png.flaticon.com/512/5542/5542205.png" class="stat-img" />
-        <h3 class="stat-name">XP: ${pokemon.baseXP}</h3>
-      </div>
-      
-      <div class="stat">
-        <img src="https://cdn-icons-png.flaticon.com/512/1840/1840692.png" class="stat-img" />
-        <h3 class="stat-name">ATK: ${pokemon.stats[1]}</h3>
-      </div>
-      <div class="stat">
-        <img src="https://cdn-icons-png.flaticon.com/512/490/490014.png" class="stat-img" />
-        <h3 class="stat-name">DEF: ${pokemon.stats[2]}</h3>
-      </div>
-      <div class="stat">
-        <img src="https://cdn-icons-png.flaticon.com/512/867/867922.png" class="stat-img" />
-        <h3 class="stat-name">SPATK: ${pokemon.stats[3]}</h3>
-      </div>
-      <div class="stat">
-        <img src="https://cdn-icons-png.flaticon.com/512/1840/1840215.png" class="stat-img" />
-        <h3 class="stat-name">SPDEF: ${pokemon.stats[4]}</h3>
-      </div>
-      <div class="stat">
-        <img src="https://cdn-icons-png.flaticon.com/512/1455/1455324.png" class="stat-img" />
-        <h3 class="stat-name">SPD: ${pokemon.stats[5]}</h3>
-      </div>
-    </div>
+  const pokemonName = document.createElement("h1");
+  pokemonName.classList.add("pokemon-name");
+  pokemonName.textContent = pokemon.name;
 
-    <div class="section pokemon-abilities">
-      <h2 class="section-title">Abilities</h2>
-      ${pokemon.abilities
-        .map((ability) => `<p class="section-body">${ability}</p>`)
-        .join("")}
-    </div>
+  const pokemonImg = document.createElement("img");
+  pokemonImg.src = pokemon.img;
 
-    <div class="section pokemon-moves">
-      <h2 class="section-title">Moves</h2>
-      ${pokemon.moves
-        .map((move) => `<p class="section-body">${move}</p>`)
-        .join("")}
-    </div>
+  const pokemonTypes = document.createElement("div");
+  pokemonTypes.classList.add("pokemon-types");
 
-  </div>
-`;
-
-  // Agregar la estructura HTML al DOM
-  document.getElementById("pokemon-stat").innerHTML = pokemonStatHTML;
-
-  pokemonStat.innerHTML = pokemonStatHTML;
-}
-
-fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/encounters`)
-  .then((response) => response.json())
-  .then((data) => {
-    locations = data.map((encounter) => encounter.location_area.name);
-    const locationsHTML = `
-      <div class="bold">Locations: ${locations.join(", ")}</div>
-    `;
-    pokemonStat.innerHTML += locationsHTML;
+  pokemon.types.forEach((type) => {
+    const typeP = document.createElement("p");
+    typeP.id = type;
+    typeP.classList.add("type", type.toLowerCase());
+    typeP.textContent = type;
+    pokemonTypes.appendChild(typeP);
   });
+
+  pokemonImgContainer.appendChild(pokemonName);
+  pokemonImgContainer.appendChild(pokemonImg);
+  pokemonImgContainer.appendChild(pokemonTypes);
+
+  // Obtaining Stats Data
+  const pokemonStatsContainer = document.getElementById("pokemonStats");
+
+  const statsData = [
+    {
+      name: "HP",
+      value: pokemon.stats[0],
+      imgSrc: "https://cdn-icons-png.flaticon.com/512/602/602455.png",
+    },
+    {
+      name: "XP",
+      value: pokemon.baseXP,
+      imgSrc: "https://cdn-icons-png.flaticon.com/512/5542/5542205.png",
+    },
+    {
+      name: "ATK",
+      value: pokemon.stats[1],
+      imgSrc: "https://cdn-icons-png.flaticon.com/512/1840/1840692.png",
+    },
+    {
+      name: "DEF",
+      value: pokemon.stats[2],
+      imgSrc: "https://cdn-icons-png.flaticon.com/512/490/490014.png",
+    },
+    {
+      name: "SPATK",
+      value: pokemon.stats[3],
+      imgSrc: "https://cdn-icons-png.flaticon.com/512/867/867922.png",
+    },
+    {
+      name: "SPDEF",
+      value: pokemon.stats[4],
+      imgSrc: "https://cdn-icons-png.flaticon.com/512/1840/1840215.png",
+    },
+    {
+      name: "SPD",
+      value: pokemon.stats[5],
+      imgSrc: "https://cdn-icons-png.flaticon.com/512/1455/1455324.png",
+    },
+  ];
+
+  statsData.forEach((stat) => {
+    const statDiv = document.createElement("div");
+    statDiv.classList.add("stat");
+
+    const img = document.createElement("img");
+    img.src = stat.imgSrc;
+    img.classList.add("stat-img");
+
+    const statName = document.createElement("h4");
+    statName.classList.add("stat-name");
+    statName.textContent = `${stat.name}: ${stat.value}`;
+
+    const meter = document.createElement("meter");
+    meter.value = stat.value;
+    meter.max = 255;
+
+    statDiv.appendChild(img);
+    statDiv.appendChild(statName);
+    statDiv.appendChild(meter);
+
+    pokemonStats.appendChild(statDiv);
+  });
+
+  const pokemonAbilities = document.getElementById("pokemonAbilities");
+
+  pokemon.abilities.forEach((ability) => {
+    const abilityP = document.createElement("p");
+    abilityP.classList.add("section-body");
+    abilityP.textContent = ability.replace(/-/g, " ");
+    pokemonAbilities.appendChild(abilityP);
+  });
+
+  const pokemonLocations = document.getElementById("pokemonLocations");
+
+  fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/encounters`)
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.length === 0) {
+        const noLocationsMessage = document.createElement("p");
+        noLocationsMessage.classList.add(
+          "section-body",
+          "warning-text",
+          "bold"
+        );
+        noLocationsMessage.textContent =
+          "You cannot find this Pokémon in the world";
+        pokemonLocations.appendChild(noLocationsMessage);
+      } else {
+        data.forEach((encounter) => {
+          const locationName = document.createElement("p");
+          locationName.classList.add("section-body");
+          locationName.textContent = encounter.location_area.name.replace(
+            /-/g,
+            " "
+          );
+          pokemonLocations.appendChild(locationName);
+        });
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching locations:", error);
+    });
+
+  const pokemonMoves = document.getElementById("pokemonMoves");
+
+  pokemon.moves.forEach((move) => {
+    const moveP = document.createElement("p");
+    moveP.classList.add("section-body");
+    moveP.textContent = move.replace(/-/g, " ");
+    pokemonMoves.appendChild(moveP);
+  });
+}

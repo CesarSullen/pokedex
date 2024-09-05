@@ -1,7 +1,8 @@
-const pokemonList = document.getElementById("pokemon-list");
+const pokemonList = document.getElementById("pokemonList");
 
+const totalPokemons = 151; // Primera generación
 // Obtaining Pokémon List
-for (let i = 1; i <= 151; i++) {
+for (let i = 1; i <= totalPokemons; i++) {
   fetch("https://pokeapi.co/api/v2/pokemon/" + i)
     .then((response) => response.json())
     .then((data) => {

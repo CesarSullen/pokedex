@@ -23,11 +23,17 @@
 .pokemon-info {
   padding: 0.5rem;
 
+  .pokemon-name {
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
   .pokemon-types {
     display: flex;
     justify-content: center;
     text-transform: uppercase;
     gap: 5px;
+    margin-bottom: 0.5rem;
   }
   .type {
     font-size: 0.7rem;

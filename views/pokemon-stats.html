@@ -6,17 +6,31 @@
 
     <meta property="og:title" content="Pokémon Stat" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="./public/logo.JPG" />
+    <meta property="og:image" content="../public/logo.JPG" />
 
-    <link rel="icon" type="image/jpg" href="./public/logo.JPG" />
-    <link rel="apple-touch-icon" sizes="180x180" href="./public/logo.JPG" />
+    <link rel="icon" type="image/jpg" href="../public/logo.JPG" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../public/logo.JPG" />
 
     <link rel="stylesheet" href="../style/style.css" />
 
     <title>Pokémon Stats</title>
   </head>
   <body>
-    <div id="pokemon-stat" class="body-container"></div>
+    <div id="pokemon-stat" class="body-container">
+      <div class="pokemon-img-container section" id="pokemonImgContainer"></div>
+      <div class="pokemon-stats section" id="pokemonStats">
+        <h2 class="section-title">Base Stats</h2>
+      </div>
+      <div class="pokemon-abilities section" id="pokemonAbilities">
+        <h2 class="section-title">Abilities</h2>
+      </div>
+      <div class="pokemon-locations section" id="pokemonLocations">
+        <h2 class="section-title">Locations</h2>
+      </div>
+      <div class="pokemon-moves section" id="pokemonMoves">
+        <h2 class="section-title">Moves</h2>
+      </div>
+    </div>
     <script src="../js/pokemon-stats.js"></script>
   </body>
 </html>
