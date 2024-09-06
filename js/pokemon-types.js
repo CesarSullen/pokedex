@@ -16,7 +16,7 @@ for (let i = 1; i <= 151; i++) {
         };
 
         const link = document.createElement("a");
-        link.href = `./views/pokemon-stats.html?id=${pokemon.id}`;
+        link.href = `../views/pokemon-stats.html?id=${pokemon.id}`;
 
         const card = document.createElement("div");
         card.classList.add("pokemon-card");

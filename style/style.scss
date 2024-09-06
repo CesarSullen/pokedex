@@ -82,12 +82,17 @@ a {
 
   #searchInput {
     width: 100%;
-
     padding: 0.5rem;
     border-radius: 5px;
     font-size: 16px;
     background-color: $bg-color-darker;
     color: $white;
+    border: solid 2px lighten($color: $bg-color, $amount: 30%);
+
+    &:focus {
+      border: solid 2px $primary-color;
+      box-shadow: 0 0 3px 2px $primary-color;
+    }
   }
   #searchBtn {
     padding: 8px;

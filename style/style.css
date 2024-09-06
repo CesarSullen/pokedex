@@ -268,6 +268,11 @@ a {
   font-size: 16px;
   background-color: #1c1c1c;
   color: #f7f7f7;
+  border: solid 2px #717989;
+}
+.search-container #searchInput:focus {
+  border: solid 2px #7038f8;
+  box-shadow: 0 0 3px 2px #7038f8;
 }
 .search-container #searchBtn {
   padding: 8px;
