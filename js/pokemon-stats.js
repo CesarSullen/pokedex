@@ -16,6 +16,7 @@ function showPokemon(poke) {
     id: poke.id,
     name: poke.name,
     img: poke.sprites.other.dream_world.front_default,
+    gif: poke.sprites.other.showdown.front_default,
     height: poke.height,
     weight: poke.weight,
     types: poke.types.map((type) => type.type.name),
@@ -32,11 +33,11 @@ function showPokemon(poke) {
   pokemonName.classList.add("pokemon-name");
   pokemonName.textContent = pokemon.name;
 
-  const pokemonImg = document.createElement("img");
-  pokemonImg.src = pokemon.img;
-
   const pokemonTypes = document.createElement("div");
   pokemonTypes.classList.add("pokemon-types");
+
+  const pokemonImg = document.createElement("img");
+  pokemonImg.src = pokemon.gif;
 
   pokemon.types.forEach((type) => {
     const typeP = document.createElement("p");
@@ -47,8 +48,8 @@ function showPokemon(poke) {
   });
 
   pokemonImgContainer.appendChild(pokemonName);
-  pokemonImgContainer.appendChild(pokemonImg);
   pokemonImgContainer.appendChild(pokemonTypes);
+  pokemonImgContainer.appendChild(pokemonImg);
 
   // Obtaining Stats Data
   const pokemonStatsContainer = document.getElementById("pokemonStats");
@@ -168,13 +169,34 @@ function showPokemon(poke) {
 
 // Updating OG Tags
 function updateOGTags(title, imgURL) {
-  const ogTitle = document.getElementById("ogTitle");
+  // Title tag
+  const ogTitle = document.querySelector('meta[property="og:title"]');
   if (ogTitle) {
     ogTitle.setAttribute("content", title);
+  } else {
+    console.warn("OG title tag not found.");
+  }
 
-    const ogImg = document.getElementById("ogImg");
-    if (ogImg) {
-      ogImg.setAttribute("content", imgURL);
-    }
+  // Image tag
+  const ogImg = document.querySelector('meta[property="og:image"]');
+  if (ogImg) {
+    ogImg.setAttribute("content", imgURL);
+  } else {
+    console.warn("OG image tag not found.");
   }
 }
+
+// Accordion
+const items = document.querySelectorAll(".accordion-item");
+
+items.forEach((item) => {
+  const header = item.querySelector(".accordion-header");
+
+  header.addEventListener("click", () => {
+    const content = item.querySelector(".accordion-content");
+    const toggle = item.querySelector(".accordion-toggle");
+
+    content.classList.toggle("active");
+    toggle.classList.toggle("turned");
+  });
+});

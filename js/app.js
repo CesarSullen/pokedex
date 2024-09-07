@@ -1,45 +1,80 @@
 const pokemonList = document.getElementById("pokemonList");
 
-const totalPokemons = 151; // Primera generación
+const totalPokemons = 1118;
+let offset = 0;
+let limit = 12;
+
 // Obtaining Pokémon List
-for (let i = 1; i <= totalPokemons; i++) {
-  fetch("https://pokeapi.co/api/v2/pokemon/" + i)
-    .then((response) => response.json())
-    .then((data) => {
-      const pokemon = {
-        id: data.id,
-        name: data.name,
-        img: data.sprites.other.dream_world.front_default,
-        types: data.types.map((type) => type.type.name),
+async function fetchPokemon(offset) {
+  try {
+    const response = await fetch(
+      `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
+    );
+
+    const data = await response.json();
+
+    const pokemonList = document.getElementById("pokemonList");
+
+    data.results.forEach(async (pokemonData) => {
+      const pokemonResponse = await fetch(pokemonData.url);
+      const pokemon = await pokemonResponse.json();
+
+      const pokemonCard = {
+        id: pokemon.id,
+        name: pokemon.name,
+        img: pokemon.sprites.other.dream_world.front_default,
+        types: pokemon.types.map((type) => type.type.name),
       };
 
       const link = document.createElement("a");
-      link.href = `./views/pokemon-stats.html?id=${pokemon.id}`;
+      link.href = `./views/pokemon-stats.html?id=${pokemonCard.id}`;
 
       const card = document.createElement("div");
       card.classList.add("pokemon-card");
 
       card.innerHTML = `
-        <div class="pokemon-img">
-            <img src="${pokemon.img}" alt="${pokemon.name}">
-        </div>
-        <div class="pokemon-info">
-            <h3 class="pokemon-name">${pokemon.name}</h3>
-            
-            <div class="pokemon-types bold">${pokemon.types
-              .map((type) => {
-                const typeClass = type.toLowerCase();
-                return `<span class="type ${typeClass}">${type}</span>`;
-              })
-              .join("")}</div>
-        </div>
-      `;
+              <div class="pokemon-img">
+                  <img src="${pokemonCard.img}" alt="${pokemonCard.name}">
+              </div>
+              <div class="pokemon-info">
+                  <h3 class="pokemon-name">${pokemonCard.name}</h3>
+                  
+                  <div class="pokemon-types bold">${pokemonCard.types
+                    .map((type) => {
+                      const typeClass = type.toLowerCase();
+                      return `<span class="type ${typeClass}">${type}</span>`;
+                    })
+                    .join("")}</div>
+              </div>
+            `;
 
       link.appendChild(card);
       pokemonList.appendChild(link);
-    })
-    .catch((error) => console.log(error));
+    });
+  } catch (error) {
+    console.log(error);
+  }
 }
+
+fetchPokemon(offset);
+
+// Pagination
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+
+prevBtn.addEventListener("click", () => {
+  pokemonList.innerHTML = "";
+  if (offset > 0) {
+    offset -= limit;
+    fetchPokemon(offset);
+  }
+});
+
+nextBtn.addEventListener("click", () => {
+  pokemonList.innerHTML = "";
+  offset += limit;
+  fetchPokemon(offset);
+});
 
 // Obtaining Pokémon types
 const categories = document.getElementById("categories");

@@ -11,10 +11,7 @@
   flex-direction: column;
   align-items: center;
   background: linear-gradient($bg-color-darker);
-  img {
-    width: 100%;
-    max-width: 15rem;
-  }
+
   .pokemon-types {
     bottom: 0;
     display: flex;
@@ -24,8 +21,14 @@
       text-transform: uppercase;
       padding: 0.2rem 1rem;
       font-size: 0.8rem;
-      border-radius: 100vh;
+      border-radius: 3px;
+      margin-bottom: 2rem;
     }
+  }
+
+  img {
+    width: 100%;
+    max-width: 150px;
   }
 }
 .section-title {
@@ -41,8 +44,12 @@
   background-color: $bg-color-darker;
   border-radius: 15px;
   padding: 1rem;
-}
+  border: 2px solid $primary-color;
 
+  &.accordion {
+    padding: 0;
+  }
+}
 .pokemon-stats {
   display: flex;
   flex-direction: column;
@@ -59,6 +66,48 @@
   meter {
     border-radius: 50px;
     width: 50%;
+  }
+}
+
+// Accordion
+.accordion {
+  width: 100%;
+}
+.accordion-item {
+  border-radius: 15px;
+  margin-bottom: 5px;
+}
+.accordion-header {
+  display: flex;
+  padding-inline: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+
+  .accordion-title {
+    color: $primary-color;
+    padding-block: 10px;
+  }
+  .accordion-toggle {
+    width: 35px;
+    height: 35px;
+
+    &.turned {
+      transform: rotate(180deg);
+    }
+  }
+}
+.accordion-content {
+  font-size: 1rem;
+  padding-inline: 1rem;
+  transition: all 0.3s ease-in-out;
+  max-height: 0px;
+  overflow: hidden;
+  color: #fff;
+
+  &.active {
+    max-height: 5000px;
+    padding-bottom: 1rem;
   }
 }
 

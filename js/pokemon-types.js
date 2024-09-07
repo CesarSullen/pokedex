@@ -3,7 +3,7 @@ const typeName = urlParams.get("name");
 
 const pokemonListByType = document.getElementById("pokemonListByType");
 
-for (let i = 1; i <= 151; i++) {
+for (let i = 1; i <= 1118; i++) {
   fetch("https://pokeapi.co/api/v2/pokemon/" + i)
     .then((response) => response.json())
     .then((data) => {

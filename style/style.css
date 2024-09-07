@@ -252,7 +252,7 @@ a {
 #pokemonListByType {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 20px;
 }
 
 .search-container {
@@ -305,6 +305,19 @@ a {
 }
 .category:hover {
   box-shadow: 0px 0px 5px 3px #7038f8;
+}
+
+.pagination-btn-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+.pagination-btn-container #nextBtn,
+.pagination-btn-container #prevBtn {
+  padding: 0.6rem;
+  text-transform: uppercase;
+  width: 40%;
+  text-align: center;
 }
 
 @media screen and (min-width: 720px) {
@@ -533,10 +546,6 @@ a {
   align-items: center;
   background: linear-gradient(#1c1c1c);
 }
-.pokemon-img-container img {
-  width: 100%;
-  max-width: 15rem;
-}
 .pokemon-img-container .pokemon-types {
   bottom: 0;
   display: flex;
@@ -547,7 +556,12 @@ a {
   text-transform: uppercase;
   padding: 0.2rem 1rem;
   font-size: 0.8rem;
-  border-radius: 100vh;
+  border-radius: 3px;
+  margin-bottom: 2rem;
+}
+.pokemon-img-container img {
+  width: 100%;
+  max-width: 150px;
 }
 
 .section-title {
@@ -564,6 +578,10 @@ a {
   background-color: #1c1c1c;
   border-radius: 15px;
   padding: 1rem;
+  border: 2px solid #7038f8;
+}
+.section.accordion {
+  padding: 0;
 }
 
 .pokemon-stats {
@@ -583,6 +601,47 @@ a {
 .stat meter {
   border-radius: 50px;
   width: 50%;
+}
+
+.accordion {
+  width: 100%;
+}
+
+.accordion-item {
+  border-radius: 15px;
+  margin-bottom: 5px;
+}
+
+.accordion-header {
+  display: flex;
+  padding-inline: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.accordion-header .accordion-title {
+  color: #7038f8;
+  padding-block: 10px;
+}
+.accordion-header .accordion-toggle {
+  width: 35px;
+  height: 35px;
+}
+.accordion-header .accordion-toggle.turned {
+  transform: rotate(180deg);
+}
+
+.accordion-content {
+  font-size: 1rem;
+  padding-inline: 1rem;
+  transition: all 0.3s ease-in-out;
+  max-height: 0px;
+  overflow: hidden;
+  color: #fff;
+}
+.accordion-content.active {
+  max-height: 5000px;
+  padding-bottom: 1rem;
 }
 
 @media screen and (min-width: 700px) {
