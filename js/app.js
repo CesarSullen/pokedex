@@ -78,20 +78,36 @@ nextBtn.addEventListener("click", () => {
 
 // Obtaining Pokémon types
 const categories = document.getElementById("categories");
+
 for (let i = 1; i <= 18; i++) {
-  fetch("https://pokeapi.co/api/v2/type/" + i)
+  fetch(`https://pokeapi.co/api/v2/type/${i}`)
     .then((response) => response.json())
     .then((data) => {
       const typeBtn = document.createElement("button");
-      typeBtn.onclick = function () {
-        window.location.href = `./views/pokemon-types.html?name=${data.name}`;
-      };
+      const typeImg = document.createElement("img");
+      const typeText = document.createElement("p");
+
+      typeImg.classList.add("type-img");
+      typeImg.setAttribute("src", `./public/icons/${data.name}.svg`);
+      typeImg.id = data.name;
 
       typeBtn.classList.add("type-btn");
       typeBtn.classList.add("category");
-      typeBtn.textContent = data.name.toUpperCase();
+
+      typeText.textContent = `${data.name.toUpperCase()}`;
+      typeText.classList.add("type-text");
+
+      typeBtn.appendChild(typeImg);
+      typeBtn.appendChild(typeText);
 
       categories.appendChild(typeBtn);
+
+      typeBtn.onclick = function () {
+        window.location.href = `./views/pokemon-types.html?name=${data.name}`;
+      };
+    })
+    .catch((error) => {
+      console.error("Fetch error:", error);
     });
 }
 

@@ -52,8 +52,6 @@ function showPokemon(poke) {
   pokemonImgContainer.appendChild(pokemonImg);
 
   // Obtaining Stats Data
-  const pokemonStatsContainer = document.getElementById("pokemonStats");
-
   const statsData = [
     {
       name: "HP",
@@ -163,7 +161,6 @@ function showPokemon(poke) {
     moveP.textContent = move.replace(/-/g, " ");
     pokemonMoves.appendChild(moveP);
   });
-
   updateOGTags(pokemon.name, pokemon.img);
 }
 
@@ -179,7 +176,7 @@ function updateOGTags(title, imgURL) {
 
   // Image tag
   const ogImg = document.querySelector('meta[property="og:image"]');
-  if (ogImg) {
+  if (ogImg.content) {
     ogImg.setAttribute("content", imgURL);
   } else {
     console.warn("OG image tag not found.");
