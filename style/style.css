@@ -354,7 +354,7 @@ a {
 .pokemon-info .type {
   font-size: 0.7rem;
   padding: 0.25rem 0.5rem;
-  border-radius: 100vmax;
+  border-radius: 3px;
 }
 .pokemon-info .type.normal {
   background-color: #a8a878;
@@ -575,10 +575,10 @@ a {
 .stat {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
 }
 .stat .stat-img {
-  width: 35px;
+  width: 30px;
 }
 .stat meter {
   border-radius: 50px;

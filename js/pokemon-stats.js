@@ -162,4 +162,19 @@ function showPokemon(poke) {
     moveP.textContent = move.replace(/-/g, " ");
     pokemonMoves.appendChild(moveP);
   });
+
+  updateOGTags(pokemon.name, pokemon.img);
+}
+
+// Updating OG Tags
+function updateOGTags(title, imgURL) {
+  const ogTitle = document.getElementById("ogTitle");
+  if (ogTitle) {
+    ogTitle.setAttribute("content", title);
+
+    const ogImg = document.getElementById("ogImg");
+    if (ogImg) {
+      ogImg.setAttribute("content", imgURL);
+    }
+  }
 }
