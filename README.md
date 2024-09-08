@@ -21,6 +21,6 @@ The icons for Pokémon types were sourced from this [link](https://github.com/du
 
 # Try the Pokedex
 
-You can try the application at the following link: [cesarsullen.github.io/pokedex](cesarsullen.github.io/pokedex).
+You can try the application at the following link: [cesarsullen.github.io/pokedex](https://cesarsullen.github.io/pokedex).
 
 I hope you enjoy exploring the world of Pokémon!
