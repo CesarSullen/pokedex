@@ -26,7 +26,7 @@ function showPokemon(poke) {
     stats: poke.stats.map((stat) => stat.base_stat),
   };
 
-  // Añadir los elementos al DOM
+  // Adding the elements to the DOM
   const pokemonImgContainer = document.getElementById("pokemonImgContainer");
 
   const pokemonName = document.createElement("h1");
@@ -39,6 +39,11 @@ function showPokemon(poke) {
   const pokemonImg = document.createElement("img");
   pokemonImg.src = pokemon.gif;
 
+  const pokemonMeasures = document.createElement("div");
+  pokemonMeasures.classList.add("pokemon-measures");
+  const pokemonWeight = document.createElement("div");
+  const pokemonHeight = document.createElement("div");
+
   pokemon.types.forEach((type) => {
     const typeP = document.createElement("p");
     typeP.id = type;
@@ -47,9 +52,15 @@ function showPokemon(poke) {
     pokemonTypes.appendChild(typeP);
   });
 
+  pokemonWeight.innerText = pokemon.weight / 10 + " kg";
+  pokemonHeight.innerText = pokemon.height / 10 + " m";
+
   pokemonImgContainer.appendChild(pokemonName);
   pokemonImgContainer.appendChild(pokemonTypes);
   pokemonImgContainer.appendChild(pokemonImg);
+  pokemonMeasures.appendChild(pokemonWeight);
+  pokemonMeasures.appendChild(pokemonHeight);
+  pokemonImgContainer.appendChild(pokemonMeasures);
 
   // Obtaining Stats Data
   const statsData = [
@@ -176,7 +187,7 @@ function updateOGTags(title, imgURL) {
 
   // Image tag
   const ogImg = document.querySelector('meta[property="og:image"]');
-  if (ogImg.content) {
+  if (ogImg) {
     ogImg.setAttribute("content", imgURL);
   } else {
     console.warn("OG image tag not found.");

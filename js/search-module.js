@@ -61,3 +61,7 @@ document
       document.getElementById("searchBtn").click();
     }
   });
+
+document.getElementById("clearBtn").addEventListener("click", function () {
+  document.getElementById("searchInput").value = "";
+});

@@ -94,7 +94,8 @@ a {
       box-shadow: 0 0 3px 2px $primary-color;
     }
   }
-  #searchBtn {
+  #searchBtn,
+  #clearBtn {
     padding: 8px;
     border-radius: 5px;
     cursor: pointer;
@@ -129,7 +130,7 @@ a {
   .type-img {
     width: 25px;
     border-radius: 5px;
-    padding: 3px;
+    padding: 4px;
     @each $type, $color in $pokemon-types {
       ##{$type} {
         background-color: $color;
@@ -153,6 +154,36 @@ a {
     text-transform: uppercase;
     width: 40%;
     text-align: center;
+  }
+}
+// Footer
+footer {
+  background-color: $bg-color-darker;
+  padding: 1rem;
+  text-align: center;
+  font-family: "Tomorrow";
+  border-radius: 10px 10px 0 0;
+
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+
+    .footer-image {
+      width: 50%;
+      margin: auto;
+      max-width: 200px;
+      margin-bottom: 10px;
+    }
+
+    .footer-links {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+
+      a {
+        color: $primary-color;
+      }
+    }
   }
 }
 

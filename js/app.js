@@ -2,7 +2,7 @@ const pokemonList = document.getElementById("pokemonList");
 
 const totalPokemons = 1118;
 let offset = 0;
-let limit = 12;
+let limit = 8;
 
 // Obtaining Pokémon List
 async function fetchPokemon(offset) {
