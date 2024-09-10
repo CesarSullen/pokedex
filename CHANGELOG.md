@@ -65,3 +65,11 @@
 - Added footer to the page
 - Added weight and height to each pokémon
 - Added a cleaner button to the search bar
+
+## 1.3.0
+
+### Custom meter, UI improvements
+
+- Added my own meter element for a better UI
+- Now the weight and height of the pokémon is made in HTML
+- UI improvements in the stats page
