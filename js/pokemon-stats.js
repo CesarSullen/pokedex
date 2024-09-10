@@ -29,20 +29,17 @@ function showPokemon(poke) {
   // Adding the elements to the DOM
   const pokemonImgContainer = document.getElementById("pokemonImgContainer");
 
-  const pokemonName = document.createElement("h1");
-  pokemonName.classList.add("pokemon-name");
+  const pokemonName = document.querySelector(".pokemon-name");
   pokemonName.textContent = pokemon.name;
 
-  const pokemonTypes = document.createElement("div");
-  pokemonTypes.classList.add("pokemon-types");
+  const pokemonTypes = document.querySelector(".pokemon-types");
 
   const pokemonImg = document.createElement("img");
   pokemonImg.src = pokemon.gif;
 
-  const pokemonMeasures = document.createElement("div");
-  pokemonMeasures.classList.add("pokemon-measures");
-  const pokemonWeight = document.createElement("div");
-  const pokemonHeight = document.createElement("div");
+  const pokemonMeasures = document.querySelector(".pokemon-measures");
+  const pokemonWeight = document.getElementById("pokemonWeight");
+  const pokemonHeight = document.getElementById("pokemonHeight");
 
   pokemon.types.forEach((type) => {
     const typeP = document.createElement("p");
@@ -55,11 +52,7 @@ function showPokemon(poke) {
   pokemonWeight.innerText = pokemon.weight / 10 + " kg";
   pokemonHeight.innerText = pokemon.height / 10 + " m";
 
-  pokemonImgContainer.appendChild(pokemonName);
-  pokemonImgContainer.appendChild(pokemonTypes);
   pokemonImgContainer.appendChild(pokemonImg);
-  pokemonMeasures.appendChild(pokemonWeight);
-  pokemonMeasures.appendChild(pokemonHeight);
   pokemonImgContainer.appendChild(pokemonMeasures);
 
   // Obtaining Stats Data
@@ -110,17 +103,30 @@ function showPokemon(poke) {
     img.classList.add("stat-img");
 
     const statName = document.createElement("h4");
-    statName.classList.add("stat-name");
-    statName.textContent = `${stat.name}: ${stat.value}`;
+    statName.textContent = stat.name;
 
-    const meter = document.createElement("meter");
-    meter.value = stat.value;
-    meter.max = 255;
+    const customMeter = document.createElement("div");
+    customMeter.classList.add("custom-meter");
+
+    const meterValue = document.createElement("div");
+    meterValue.classList.add("meter-value");
+    meterValue.style.width = 0;
+    const percentage = (stat.value / 255) * 100;
+
+    setTimeout(() => {
+      meterValue.style.width = percentage + "%";
+    }, 1000);
+
+    const statValue = document.createElement("h4");
+    statValue.classList.add("important-text");
+    statValue.textContent = stat.value;
+
+    customMeter.appendChild(meterValue);
 
     statDiv.appendChild(img);
     statDiv.appendChild(statName);
-    statDiv.appendChild(meter);
-
+    statDiv.appendChild(customMeter);
+    statDiv.appendChild(statValue);
     pokemonStats.appendChild(statDiv);
   });
 
