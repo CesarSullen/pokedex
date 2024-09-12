@@ -30,7 +30,6 @@
   padding: 1.5rem;
   max-width: 1000px;
   margin: auto;
-  font-family: "Tomorrow";
 }
 .btn {
   padding: 1rem 2rem;
@@ -53,6 +52,7 @@
 body {
   background-color: $bg-color;
   color: $white;
+  font-family: "Tomorrow";
 }
 .fade-in {
   transform: translateY(100px);
@@ -107,6 +107,9 @@ a {
     img {
       width: 25px;
     }
+  }
+  #clearBtn {
+    background: none;
   }
 }
 #categories {

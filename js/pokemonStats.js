@@ -1,5 +1,3 @@
-const pokemonStat = document.getElementById("pokemon-stat");
-
 const urlParams = new URLSearchParams(window.location.search);
 const pokemonId = urlParams.get("id");
 
@@ -12,7 +10,7 @@ async function fetchData() {
 fetchData();
 
 function showPokemon(poke) {
-  pokemon = {
+  const pokemon = {
     id: poke.id,
     name: poke.name,
     img: poke.sprites.other.dream_world.front_default,
@@ -27,6 +25,9 @@ function showPokemon(poke) {
   };
 
   // Adding the elements to the DOM
+  const pokemonIdElement = document.querySelector(".pokemon-id");
+  pokemonIdElement.innerText = "#" + pokemon.id;
+
   const pokemonImgContainer = document.getElementById("pokemonImgContainer");
 
   const pokemonName = document.querySelector(".pokemon-name");
@@ -94,6 +95,7 @@ function showPokemon(poke) {
     },
   ];
 
+  const pokemonStat = document.getElementById("pokemonStats");
   statsData.forEach((stat) => {
     const statDiv = document.createElement("div");
     statDiv.classList.add("stat");
@@ -127,8 +129,37 @@ function showPokemon(poke) {
     statDiv.appendChild(statName);
     statDiv.appendChild(customMeter);
     statDiv.appendChild(statValue);
-    pokemonStats.appendChild(statDiv);
+    pokemonStat.appendChild(statDiv);
   });
+
+  // Pokémon Description
+  async function getPokemonDescription() {
+    try {
+      const response = await fetch(
+        `https://pokeapi.co/api/v2/pokemon-species/${pokemonId}`
+      );
+      const data = await response.json();
+      const descriptions = data.flavor_text_entries;
+
+      // EN
+      const englishDescription = descriptions.find(
+        (entry) => entry.language.name === "en"
+      );
+      const descriptionText = englishDescription.flavor_text.replace(
+        /\n/g,
+        " "
+      );
+      displayDescription(descriptionText);
+    } catch (error) {
+      console.error("Error fetching Pokémon description:", error);
+    }
+  }
+  getPokemonDescription();
+
+  function displayDescription(description) {
+    const pokemonDescription = document.getElementById("pokemonDescription");
+    pokemonDescription.innerText = description;
+  }
 
   const pokemonAbilities = document.getElementById("pokemonAbilities");
 

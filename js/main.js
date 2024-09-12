@@ -4,7 +4,7 @@ const totalPokemons = 1118;
 let offset = 0;
 let limit = 8;
 
-// Obtaining Pokémon List
+// Pokémon List
 async function fetchPokemon(offset) {
   try {
     const response = await fetch(
@@ -76,7 +76,7 @@ nextBtn.addEventListener("click", () => {
   fetchPokemon(offset);
 });
 
-// Obtaining Pokémon types
+// Pokémon types
 const categories = document.getElementById("categories");
 
 for (let i = 1; i <= 18; i++) {

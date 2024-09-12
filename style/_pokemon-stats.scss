@@ -1,3 +1,20 @@
+nav {
+  @extend .body-container;
+  padding-block: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  a {
+    display: flex;
+    align-items: center;
+  }
+  img {
+    width: 25px;
+  }
+}
 #pokemon-stat .pokemon-name {
   text-transform: capitalize;
   text-align: center;
@@ -85,6 +102,11 @@
   }
 }
 
+// Description
+.pokemon-description {
+  grid-column: span 2;
+}
+
 // Accordion
 .accordion {
   width: 100%;
@@ -125,6 +147,10 @@
     max-height: 5000px;
     padding-bottom: 1rem;
   }
+}
+
+.pokemon-moves {
+  grid-column: span 2;
 }
 
 @media screen and (min-width: 700px) {

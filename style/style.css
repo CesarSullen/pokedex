@@ -202,11 +202,10 @@
   text-decoration: underline;
 }
 
-.body-container {
+.body-container, nav {
   padding: 1.5rem;
   max-width: 1000px;
   margin: auto;
-  font-family: "Tomorrow";
 }
 
 .btn {
@@ -231,6 +230,7 @@
 body {
   background-color: #2c2f35;
   color: #f7f7f7;
+  font-family: "Tomorrow";
 }
 
 .fade-in {
@@ -287,6 +287,9 @@ a {
 .search-container #searchBtn img,
 .search-container #clearBtn img {
   width: 25px;
+}
+.search-container #clearBtn {
+  background: none;
 }
 
 #categories {
@@ -640,6 +643,22 @@ footer .footer-content .footer-links a {
   box-shadow: 0px 0px 10px 2px #ee99ac;
 }
 
+nav {
+  padding-block: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+nav a {
+  display: flex;
+  align-items: center;
+}
+nav img {
+  width: 25px;
+}
+
 #pokemon-stat .pokemon-name {
   text-transform: capitalize;
   text-align: center;
@@ -726,6 +745,10 @@ footer .footer-content .footer-links a {
   background-color: #7038f8;
 }
 
+.pokemon-description {
+  grid-column: span 2;
+}
+
 .accordion {
   width: 100%;
 }
@@ -765,6 +788,10 @@ footer .footer-content .footer-links a {
 .accordion-content.active {
   max-height: 5000px;
   padding-bottom: 1rem;
+}
+
+.pokemon-moves {
+  grid-column: span 2;
 }
 
 @media screen and (min-width: 700px) {

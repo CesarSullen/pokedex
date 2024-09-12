@@ -16,6 +16,12 @@
     <title>Pokémon Stats</title>
   </head>
   <body>
+    <nav>
+      <a href="../index.html" class="important-text"
+        ><img src="../public/icons/back.svg" /> Back</a
+      >
+      <div class="pokemon-id important-text"></div>
+    </nav>
     <div id="pokemon-stat" class="body-container">
       <div class="pokemon-img-container section" id="pokemonImgContainer">
         <h2 class="pokemon-name"></h2>
@@ -27,11 +33,18 @@
           <div id="pokemonHeight"></div>
         </div>
       </div>
+
       <div class="pokemon-stats section" id="pokemonStats">
         <h2 class="section-title">Base Stats</h2>
       </div>
-      <div class="accordion section">
-        <div class="accordion-item pokemon-abilities">
+
+      <div class="pokemon-description section">
+        <h2 class="section-title">Description</h2>
+        <div class="section-content" id="pokemonDescription"></div>
+      </div>
+
+      <div class="accordion section pokemon-abilities">
+        <div class="accordion-item">
           <div class="accordion-header">
             <h2 class="accordion-title">Abilities</h2>
             <img
@@ -43,8 +56,8 @@
         </div>
       </div>
 
-      <div class="accordion section">
-        <div class="accordion-item pokemon-locations">
+      <div class="accordion section pokemon-locations">
+        <div class="accordion-item">
           <div class="accordion-header">
             <h2 class="accordion-title">Locations</h2>
             <img
@@ -56,8 +69,8 @@
         </div>
       </div>
 
-      <div class="accordion section">
-        <div class="accordion-item pokemon-moves">
+      <div class="accordion section pokemon-moves">
+        <div class="accordion-item">
           <div class="accordion-header">
             <h2 class="accordion-title">Moves</h2>
             <img
@@ -69,6 +82,6 @@
         </div>
       </div>
     </div>
-    <script src="../js/pokemon-stats.js"></script>
+    <script src="../js/pokemonStats.js"></script>
   </body>
 </html>
