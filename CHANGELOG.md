@@ -81,3 +81,9 @@
 - Changed the clear button
 - Added navigation to the stats page, with a back button and the pokemon ID
 - Added descriptions to the stats page
+
+## 1.4.1
+
+### Fixed categories
+
+- Fixed the issue that made the categories buttons didn't show the pokemon listed by type
