@@ -63,5 +63,5 @@ document
 	});
 
 document.getElementById("clearBtn").addEventListener("click", function () {
-	document.getElementById("searchInput").value;
+	document.getElementById("searchInput").value = "";
 });

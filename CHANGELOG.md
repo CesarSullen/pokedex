@@ -97,3 +97,9 @@
 - Now the clear button is in the search bar.
 - The font is downloaded now.
 - Added an animation to the cards
+
+## 1.5.1
+
+### Fixed clear button
+
+- Fixed clear button.

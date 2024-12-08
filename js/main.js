@@ -111,25 +111,3 @@ for (let i = 1; i <= 18; i++) {
 			console.error("Fetch error:", error);
 		});
 }
-
-/* 
-// Interception Observer
-const sections = document.querySelectorAll(".fade-in");
-
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      entry.target.classList.toggle("show", entry.isIntersecting);
-      if (entry.isIntersecting) {
-        observer.unobserve(entry.target);
-      }
-    });
-  },
-  {
-    threshold: 0.1,
-  }
-);
-sections.forEach((section) => {
-  observer.observe(section);
-});
- */
