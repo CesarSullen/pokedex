@@ -87,3 +87,13 @@
 ### Fixed categories
 
 - Fixed the issue that made the categories buttons didn't show the pokemon listed by type
+
+## 1.5.0
+
+### Added donations
+
+- Added donations page
+- Fixed CSS
+- Now the clear button is in the search bar.
+- The font is downloaded now.
+- Added an animation to the cards
